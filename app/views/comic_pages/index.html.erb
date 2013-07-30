@@ -1,0 +1,33 @@
+<h1>Listing comic_pages</h1>
+<%= link_to 'New Comic page', new_comic_page_path %>
+<br />
+
+<% @comic_pages.each do |comic_page| %>
+  <div class = "span4">
+    <div>
+      <%= image_tag comic_page.page_image.url(:medium) %>
+    </div>
+    <div>
+      <%= link_to 'Show', comic_page %>
+      <%= link_to 'Edit', edit_comic_page_path(comic_page) %>
+      <%= link_to 'Destroy', comic_page, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+<% end %>
+
+  <ul class="thumbnails">
+  
+  <% @comic_pages.each do |comic_page| %>
+    <li class="span4">
+      <div class="thumbnail">
+        <%= image_tag comic_page.page_image.url(:medium) %>
+        <%= link_to 'Show', comic_page %>
+        <%= link_to 'Edit', edit_comic_page_path(comic_page) %>
+        <%= link_to 'Destroy', comic_page, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+        <h3>Thumbnail label</h3>
+        <p>Thumbnail caption...</p>
+      </div>
+    </li>
+  <% end %>
+</ul>

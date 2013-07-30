@@ -1,4 +1,10 @@
 IaAlpha::Application.routes.draw do
+  root to: "site_pages#home"
+
+  get "site_pages/home"
+  get "site_pages/about"
+  get "site_pages/collaborate"
+
   resources :comics
 
 
@@ -6,7 +12,6 @@ IaAlpha::Application.routes.draw do
 
   resources :comic_pages
 
-  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

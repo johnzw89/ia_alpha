@@ -3,7 +3,6 @@ class ComicPagesController < ApplicationController
   # GET /comic_pages.json
   def index
     @comic_pages = ComicPage.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @comic_pages }
@@ -24,6 +23,7 @@ class ComicPagesController < ApplicationController
   # GET /comic_pages/new
   # GET /comic_pages/new.json
   def new
+    @current_comic = 
     @comic_page = ComicPage.new
 
     respond_to do |format|
@@ -40,7 +40,8 @@ class ComicPagesController < ApplicationController
   # POST /comic_pages
   # POST /comic_pages.json
   def create
-    @comic_page = ComicPage.create(params[:comic_page])
+    @comic = Comic.find(params[:comic])
+    @comic_page = comic.comic_page.create(params[:comic_page])
 
     respond_to do |format|
       if @comic_page.save

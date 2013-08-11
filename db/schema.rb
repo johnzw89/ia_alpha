@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730192924) do
+ActiveRecord::Schema.define(:version => 20130811223112) do
 
   create_table "comic_pages", :force => true do |t|
     t.datetime "created_at",              :null => false
@@ -20,15 +20,31 @@ ActiveRecord::Schema.define(:version => 20130730192924) do
     t.string   "page_image_content_type"
     t.integer  "page_image_file_size"
     t.datetime "page_image_updated_at"
+    t.integer  "comic_id"
+    t.integer  "page_number"
   end
 
+  add_index "comic_pages", ["comic_id"], :name => "index_comic_pages_on_comic_id"
   add_index "comic_pages", ["id"], :name => "index_comic_pages_on_id"
+  add_index "comic_pages", ["page_number"], :name => "index_comic_pages_on_page_number"
 
-  create_table "comics", :force => true do |t|
+  create_table "comic_titles", :force => true do |t|
+    t.string   "synopsis"
+    t.string   "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "title"
+  end
+
+  add_index "comic_titles", ["created_at"], :name => "index_comic_titles_on_created_at"
+  add_index "comic_titles", ["id"], :name => "index_comic_titles_on_id"
+
+  create_table "comics", :force => true do |t|
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "user_id"
     t.string   "synopsis"
+    t.integer  "comic_title_id"
   end
 
   add_index "comics", ["user_id"], :name => "index_comics_on_user_id"
@@ -46,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20130730192924) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

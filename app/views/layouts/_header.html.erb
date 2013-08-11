@@ -6,16 +6,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-             <a class="brand" href="/">Ink Assembly</a>
-
-                <div class="nav-collapse">
+             <a class="brand" href= <%= root_path %> >InkAssembly</a>
+                <div class="nav-collapse pull-right">
                     <ul class="nav">
-                        <li>
-                            <%= link_to 'Home',  root_path %>
-                        </li>
+                        <li><%= link_to 'Read' , comic_titles_index_path %></li>
+                        <li><%= link_to 'Publish' , '#' %></li>
+                        <li><%= link_to 'Collaborate' , '#' %></li>
                     </ul>
                     <ul class="nav pull-right">
-                                <li><%= link_to 'Login',  '#' %></li>
+                        <li>
+                            <% if user_signed_in? %>
+                                <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+                            <% else %>
+                                <%= link_to 'Login', new_user_session_path %>
+                            <% end %>
+                        </li>
                     </ul>
                 </div>
         </div>

@@ -1,16 +1,29 @@
 IaAlpha::Application.routes.draw do
+
   root to: "site_pages#home"
 
   get "site_pages/home"
   get "site_pages/about"
   get "site_pages/collaborate"
 
-  resources :comics
-
+  get "comic_titles/index"
 
   devise_for :users
 
-  resources :comic_pages
+  resources :users, shallow: true do
+    resources :comic_titles do
+      resources :comics do
+        resources :comic_pages
+      end
+    end
+  end
+
+
+
+  # nested resources
+  #resources :comics do
+  #  resources :comic_pages
+  #end
 
 
   # The priority is based upon order of creation:

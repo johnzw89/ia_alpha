@@ -1,0 +1,26 @@
+<%= form_for ([@user, @comic_title]) do |f| %>
+  <% if @comic_title.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comic_title.errors.count, "error") %> prohibited this comic_title from being saved:</h2>
+
+      <ul>
+      <% @comic_title.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "Title of your series" %>
+  </div>
+  <div class="field">
+    <%= f.label :synopsis %>
+    <%= f.text_area :synopsis, placeholder: "What is this comic series about?  Careful not to give the story away!" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @comic_page.page_image.url %>
 <%= image_tag @comic_page.page_image(:medium) %>
 
 
 <%= link_to 'Edit', edit_comic_page_path(@comic_page) %> |
-<%= link_to 'Back', comic_pages_path %>
+<%= link_to 'Back', comic_page_path %>

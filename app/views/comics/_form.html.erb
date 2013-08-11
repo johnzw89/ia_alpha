@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= f.label :synopsis %>
+    <%= f.text_area :synopsis, placeholder: "What is this comic about?  Careful not to give the story away!" %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

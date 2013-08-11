@@ -1,0 +1,15 @@
+<div class="box">
+    <p>
+        <strong>Comic synopsis: </strong>
+        <%= comic.synopsis %>
+    </p>
+    <p>
+        by <%= link_to comic.user.email, comic.user %>
+    </p>
+    <% if current_user == comic.user %>
+        <p>
+          <%= link_to 'Edit', edit_comic_path(comic) %>
+          <%= link_to 'Destroy', comic, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+    <% end %>
+</div>

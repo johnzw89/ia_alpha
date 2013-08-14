@@ -4,9 +4,9 @@
   <% @comic_titles.each do |comic_title| %>
   <li class="span3">
     <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="">
-      <h3>Thumbnail label</h3>
-      <p>Thumbnail caption...</p>
+      <%= link_to (image_tag comic_title.cover_page(:thumb)), comic_title %>
+      <h4><%= comic_title.title %></h4>
+      <p>By <%= link_to comic_title.user.username, comic_title.user %></p>
     </div>
   </li>
   <% end %>

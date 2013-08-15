@@ -1,6 +1,6 @@
 class SitePagesController < ApplicationController
   def home
-  	@comic = Comic.all
+  	@comic_titles = ComicTitle.all
   	@user = User.all
   end
 

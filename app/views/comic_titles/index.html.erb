@@ -1,24 +1,6 @@
 <h1>Listing comic_titles</h1>
 
-<ul class="thumbnails">
-  <% @comic_titles.each do |comic_title| %>
-  <li class="span3">
-    <div class="thumbnail">
-      <%= link_to (image_tag comic_title.cover_page(:thumb)), comic_title %>
-      <h4><%= comic_title.title %></h4>
-      <p>By <%= link_to comic_title.user.username, comic_title.user %></p>
-    </div>
-  </li>
-  <% end %>
-</ul>
-
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render 'shared/comic_title_thumb' %>
 
 <% @comic_titles.each do |comic_title| %>
   <tr>
@@ -28,5 +10,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />

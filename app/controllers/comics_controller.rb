@@ -15,6 +15,7 @@ class ComicsController < ApplicationController
   # GET /comics/1.json
   def show
     @comic = Comic.find(params[:id])
+    @comic_pages = @comic.comic_pages.all
 
     respond_to do |format|
       format.html # show.html.erb

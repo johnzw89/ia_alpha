@@ -1,8 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+
 <%= @comic.synopsis %>
 
-<%= link_to 'New Comic page', '#', class: "btn btn-small" %><br>
+<ul class="thumbnails">
+  <% @comic_pages.each do |comic_page| %>
+  <li class="span3">
+    <div class="thumbnail">
+      <%= link_to (image_tag comic_page.page_image(:thumb)), comic_page %>
+    </div>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Comic page', new_comic_comic_page_path(@comic), class: "btn btn-small" %><br>
 <%= link_to 'Edit', edit_comic_path(@comic) %> |
 <%= link_to 'Back', '#' %>
 

@@ -23,8 +23,8 @@ class ComicPagesController < ApplicationController
   # GET /comic_pages/new
   # GET /comic_pages/new.json
   def new
-    @current_comic = 
-    @comic_page = ComicPage.new
+    @comic = Comic.find(params[:comic_id])
+    @comic_page = @comic.comic_pages.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,8 +40,8 @@ class ComicPagesController < ApplicationController
   # POST /comic_pages
   # POST /comic_pages.json
   def create
-    @comic = Comic.find(params[:comic])
-    @comic_page = comic.comic_page.create(params[:comic_page])
+    @comic = Comic.find(params[:comic_id])
+    @comic_page = @comic.comic_pages.create(params[:comic_page])
 
     respond_to do |format|
       if @comic_page.save

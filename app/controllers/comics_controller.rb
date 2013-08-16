@@ -15,8 +15,6 @@ class ComicsController < ApplicationController
   # GET /comics/1.json
   def show
     @comic = Comic.find(params[:id])
-    @comic_page = ComicPage.find(params[:comic])
-    @comic_pages = Comic.comic_pages.find(params[:comic_page])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +25,8 @@ class ComicsController < ApplicationController
   # GET /comics/new
   # GET /comics/new.json
   def new
-    @comic = current_user.comics.new
+    @comic_title = ComicTitle.find(params[:comic_title_id])
+    @comic = @comic_title.comics.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +42,8 @@ class ComicsController < ApplicationController
   # POST /comics
   # POST /comics.json
   def create
-    @comic = current_user.comics.new(params[:comic])
+    @comic_title = ComicTitle.find(params[:comic_title_id])
+    @comic = @comic_title.comics.new(params[:comic])
 
     respond_to do |format|
       if @comic.save

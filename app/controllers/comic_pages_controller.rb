@@ -43,10 +43,11 @@ class ComicPagesController < ApplicationController
     @comic = Comic.find(params[:comic_id])
     @comic_page = @comic.comic_pages.create(params[:comic_page])
 
+
     respond_to do |format|
       if @comic_page.save
-        format.html { redirect_to @comic_page, notice: 'Comic page was successfully created.' }
-        format.json { render json: @comic_page, status: :created, location: @comic_page }
+        format.html { redirect_to @comic, notice: 'Comic page was successfully created.' }
+        format.json { render json: @comic, status: :created, location: @comic }
       else
         format.html { render action: "new" }
         format.json { render json: @comic_page.errors, status: :unprocessable_entity }

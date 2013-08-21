@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130811223112) do
+ActiveRecord::Schema.define(:version => 20130821042756) do
 
   create_table "comic_pages", :force => true do |t|
     t.datetime "created_at",              :null => false
@@ -31,9 +31,13 @@ ActiveRecord::Schema.define(:version => 20130811223112) do
   create_table "comic_titles", :force => true do |t|
     t.string   "synopsis"
     t.string   "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
     t.string   "title"
+    t.string   "cover_page_file_name"
+    t.string   "cover_page_content_type"
+    t.integer  "cover_page_file_size"
+    t.datetime "cover_page_updated_at"
   end
 
   add_index "comic_titles", ["created_at"], :name => "index_comic_titles_on_created_at"
@@ -45,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20130811223112) do
     t.integer  "user_id"
     t.string   "synopsis"
     t.integer  "comic_title_id"
+    t.string   "title"
   end
 
   add_index "comics", ["user_id"], :name => "index_comics_on_user_id"

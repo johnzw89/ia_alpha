@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-
+<h4><%= @comic.title %></h4>
 <%= @comic.synopsis %>
+
+
+<%= link_to 'New Comic page', new_comic_comic_page_path(@comic), class: "btn btn-small" %><br>
+<%= link_to 'Edit', edit_comic_path(@comic) %> |
+<%= link_to 'Back', '#' %>
 
 <ul class="thumbnails">
   <% @comic_pages.each do |comic_page| %>
@@ -12,9 +17,3 @@
   </li>
   <% end %>
 </ul>
-
-<%= link_to 'New Comic page', new_comic_comic_page_path(@comic), class: "btn btn-small" %><br>
-<%= link_to 'Edit', edit_comic_path(@comic) %> |
-<%= link_to 'Back', '#' %>
-
-

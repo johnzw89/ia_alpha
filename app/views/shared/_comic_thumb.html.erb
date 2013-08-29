@@ -1,0 +1,13 @@
+<% unless @comics.nil? %>
+	<ul class="thumbnails">
+	  <% @comics.each do |comic| %>
+	  <li class="span3">
+	    <div class="thumbnail">
+	    	<%= image_tag comic.comic_pages.first.try(:page_image).try(:url, :thumb) %>
+
+	      <p>By <%= @comic_title.user.username %></p>
+	    </div>
+	  </li>
+	  <% end %>
+	</ul>
+<% end %>

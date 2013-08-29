@@ -19,6 +19,12 @@
     <%= f.label :synopsis %>
     <%= f.text_area :synopsis, placeholder: "What is this comic series about?  Careful not to give the story away!" %>
   </div>
+  
+  <div class="field">
+      <%= f.label :cover_page %>
+      <%= f.file_field :cover_page %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

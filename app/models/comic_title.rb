@@ -5,4 +5,6 @@ class ComicTitle < ActiveRecord::Base
   has_many :comics
   belongs_to :user
   validates :user_id, presence: true
+
+  accepts_nested_attributes_for :comics
 end

@@ -10,6 +10,8 @@ IaAlpha::Application.routes.draw do
 
   devise_for :users
 
+
+
   resources :users, shallow: true do
     resources :comic_titles do
       resources :comics do

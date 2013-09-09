@@ -21,12 +21,13 @@ class ComicTitlesController < ApplicationController
       format.json { render json: @comic_title }
     end
   end
-
+ 
   # GET /comic_titles/new
   # GET /comic_titles/new.json
   def new
     @user = current_user
-    @comic_title = current_user.comic_titles.new
+    @user_id = current_user.id
+    @comic_title = @user.comic_titles.new
   end
 
   # GET /comic_titles/1/edit

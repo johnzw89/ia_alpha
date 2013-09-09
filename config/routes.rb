@@ -5,6 +5,7 @@ IaAlpha::Application.routes.draw do
   get "site_pages/home"
   get "site_pages/about"
   get "site_pages/collaborate"
+  get "site_pages/publish"
 
   get "comic_titles/index"
 

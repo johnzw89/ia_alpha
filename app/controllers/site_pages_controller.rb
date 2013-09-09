@@ -9,4 +9,7 @@ class SitePagesController < ApplicationController
 
   def collaborate
   end
+
+  def publish
+  end
 end

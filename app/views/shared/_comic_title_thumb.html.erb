@@ -1,11 +1,17 @@
 <ul class="thumbnails">
   <% @comic_titles.each do |comic_title| %>
+
   <li class="span3">
-    <div class="thumbnail">
-      <%= link_to (image_tag (comic_title.cover_page(:thumb)), class: "thumb_page"), comic_title %>
-      <h4><%= comic_title.title %></h4>
-      <p>By <%= link_to comic_title.user.username, comic_title.user %></p>
-    </div>
+	<div class="thumbnail_box">
+	  <%= link_to (image_tag (comic_title.cover_page(:thumb)), class: "thumb_page"), comic_title %>
+	  <h4><%= comic_title.title %></h4>
+	  <p>By <%= link_to comic_title.user.username, comic_title.user %></p>
+	  
+	  <div class="thumb_synopsis">
+		<p><strong>Synopsis: </strong><%= comic_title.synopsis %></p>
+	  </div>
+
+	</div>
   </li>
   <% end %>
 </ul>

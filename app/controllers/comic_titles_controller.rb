@@ -1,4 +1,6 @@
 class ComicTitlesController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
+
   # GET /comic_titles
   # GET /comic_titles.json
   def index

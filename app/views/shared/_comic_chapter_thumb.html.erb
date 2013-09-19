@@ -1,13 +1,29 @@
 <% unless @comics.nil? %>
 	<ul class="thumbnails">
 	  <% @comics.each do |comic| %>
-	  <li class="span3">
-	    <div class="thumbnail">
-	    	<%= image_tag comic.comic_pages.first.try(:page_image).try(:url, :thumb) %>
 
-	      <p>By <%= @comic_title.user.username %></p>
-	    </div>
-	  </li>
+	  <li class="span3">
+		<div class="thumbnail_container">
+			<div class="thumbnail_box">
+			  <%= image_tag comic.comic_pages.first.try(:page_image).try(:url, :thumb), class: "thumb_image" %>
+			  
+			  <div class = "thumb_info">
+				  <h4><%= comic.title %></h4>
+				  <p class = "username">By <%= link_to @comic_title.user.username, "#" %></p>
+				  <p class = "item_count"><%= pluralize(comic.comic_pages.count, "page") %></p>
+			  </div>      
+			  <div class="thumb_synopsis">
+			  	<%= link_to content_tag(:span, "Synopsis: " + comic.synopsis), comic %>
+			  </div>
+			</div>
+			<% if current_user == @comic_title.user %>
+				<div class = "admin_links">
+			    	<%= link_to 'Edit', edit_comic_title_path(comic), class: "btn btn-small" %>
+			    	<%= link_to 'Destroy', comic, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small" %>
+		    	</div>
+		    <% end %>
+		</div>
+
 	  <% end %>
 	</ul>
 <% end %>

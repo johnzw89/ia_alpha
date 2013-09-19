@@ -1,15 +1,31 @@
 <p id="notice"><%= notice %></p>
 <% unless @comic_title.nil? %>
-	<h1><%= @comic_title.title %></h1>
-	<p>By <%= link_to @comic_title.user.username, @comic_title.user %></p>
-	<p><strong>Series Synopsis: </strong><%= @comic_title.synopsis %></p>
+<div class = "title_info_box" >
+	<div class= "row">
+		<div class= "span6" >
+			<h1><%= @comic_title.title %></h1>
+			<p>By <%= link_to @comic_title.user.username, @comic_title.user %></p>
+		</div>
+		<div class="span2 offset4" >
+			<%= link_to raw("<i class=\"icon-pencil\"></i> Edit Title"), edit_comic_title_path(@comic_title), class: "btn" %>
+		</div>
+	</div>
 
-	<%= link_to 'Edit', edit_comic_title_path(@comic_title) %> |
-	<%= link_to 'Back', root_path %>
+	<div class = "row">
+		<div class = "span3" id = "title_cover_page_box">
+			<%= image_tag (@comic_title.cover_page(:thumb)), class: "title_cover_page" %>
+		</div>
+		<div class = "span6" >
+			<p class = "synopsis"><strong>Series Synopsis: </strong><%= @comic_title.synopsis %></p>
+		</div>
+	</div>
+</div>
+
+	
 
 	<div class="row">
 		<div class="span6"><h3>Chapters</h3></div>
-		<div class="span2 offset4"><%= link_to "New Chapter", new_comic_title_comic_path(@comic_title.id), class: "btn btn-primary" %></div>
+		<div class="span2 offset4"><%= link_to "New Chapter", new_comic_title_comic_path(@comic_title.id), class: "btn btn-small btn-primary" %></div>
 	</div>
 
 	<%= render 'shared/comic_chapter_thumb' %>

@@ -7,6 +7,8 @@
 	width: 160px; //(4 x 45) + (3 x 2) + (4 x 4) = 202
 	height: 600px;
 	margin-top: 10px;
+	position: fixed;
+	display: block;
 }
 
 .grid_image_box {
@@ -34,4 +36,9 @@
 .grid_image_box:hover .grid_image {
 	opacity: 1;
 	-webkit-filter: grayscale(0%);
+}
+
+.page_image {
+	width: 100%;
+	margin-bottom: 10px;
 }

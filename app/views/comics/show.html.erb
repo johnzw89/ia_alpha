@@ -8,14 +8,22 @@
 <%= link_to 'Edit', edit_comic_path(@comic) %> |
 <%= link_to 'Back', '#' %>
 
-
-<div class = "grid_container" >
-	<% @comic_pages.each do |comic_page| %>
-	    <div class="grid_image_box">
-	    	<%= link_to image_tag(comic_page.page_image(:grid), class: "grid_image"), comic_page %>
-	    </div>
-	    <div class="image_grid_mask">
-		  	<%= link_to content_tag(:span, ), "#" %>
-		 </div>
-	<% end %>
+<div class = "row" >
+	<div class = "span2" >
+		<div class = "grid_container" >
+			<% @comic_pages.each do |comic_page| %>
+			    <div class="grid_image_box">
+			    	<%= link_to image_tag(comic_page.page_image(:grid), class: "grid_image"), comic_path(anchor: comic_page.page_number) %>
+			    </div>
+			    <div class="image_grid_mask">
+				  	<%= link_to content_tag(:span, ), "#" %>
+				 </div>
+			<% end %>
+		</div>
+	</div>
+	<div class = "span7">
+		<%= @comic_pages.each do |comic_page| %>
+			<%= link_to image_tag(comic_page.page_image(:medium), class: "page_image"), @comic_page, name: comic_page.page_number %>
+		<% end %>
+	</div>
 </div>

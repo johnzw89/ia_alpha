@@ -33,6 +33,18 @@
    -webkit-transition: all .1s ease-in-out;
 }
 
+.grid_image_mask {
+	width: 100%;
+	position: relative;
+}
+
+.grid_image_mask span {
+	width:100%;
+	height:100%;
+	position:absolute;
+
+}
+
 .grid_image_box:hover .grid_image {
 	opacity: 1;
 	-webkit-filter: grayscale(0%);

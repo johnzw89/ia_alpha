@@ -16,14 +16,16 @@
 			    	<%= link_to image_tag(comic_page.page_image(:grid), class: "grid_image"), comic_path(anchor: comic_page.page_number) %>
 			    </div>
 			    <div class="image_grid_mask">
-				  	<%= link_to content_tag(:span, ), "#" %>
-				 </div>
+			    	<%= link_to content_tag(:span, comic_page.page_number), comic_path(anchor: comic_page.page_number) %>
+				</div>
+			    
 			<% end %>
 		</div>
 	</div>
 	<div class = "span7">
 		<%= @comic_pages.each do |comic_page| %>
-			<%= link_to image_tag(comic_page.page_image(:medium), class: "page_image"), @comic_page, name: comic_page.page_number %>
+			<%= link_to("","",name: comic_page.page_number) %>
+			<%= image_tag(comic_page.page_image(:medium), class: "page_image", name: comic_page.page_number) %>
 		<% end %>
 	</div>
 </div>

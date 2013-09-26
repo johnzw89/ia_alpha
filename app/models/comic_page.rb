@@ -4,6 +4,7 @@ class ComicPage < ActiveRecord::Base
 
   validates :page_image, presence: true
   validates :page_number, presence: true
+  validates_uniqueness_of :page_number, scope: :comic_id
   
   belongs_to :comic
   

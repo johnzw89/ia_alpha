@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 gem "paperclip", "~> 3.0"
 gem 'devise'
 gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 gem 'aws-sdk'
 
 gem 'rails_12factor'

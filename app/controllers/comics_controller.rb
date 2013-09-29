@@ -15,7 +15,8 @@ class ComicsController < ApplicationController
   # GET /comics/1.json
   def show
     @comic = Comic.find(params[:id])
-    @comic_pages = @comic.comic_pages.all
+    @comic_pages = @comic.comic_pages.order("page_image_file_name desc").paginate(:page => params[:page]).per_page(1)
+    @comic_grid = @comic.comic_pages.order("page_image_file_name desc").all
 
     respond_to do |format|
       format.html # show.html.erb

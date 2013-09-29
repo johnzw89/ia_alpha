@@ -1,27 +1,24 @@
 <ul class="thumbnails">
-  <% @comic_titles.each do |comic_title| %>
-
-  <li class="span3">
-	<div class="thumbnail_container">
-		<div class="thumbnail_box">
-		  <%= image_tag (comic_title.cover_page(:thumb)), class: "thumb_image" %>
-		  
-		  <div class = "thumb_info">
-			  <h4><%= comic_title.title %></h4>
-			  <p class = "username">By <%= link_to comic_title.user.username, comic_title.user %></p>
-			  <p class = "item_count"><%= pluralize(comic_title.comics.count, "chapter") %></p>
-		  </div>      
-		  <div class="thumb_synopsis">
-		  	<%= link_to content_tag(:span, "Synopsis: " + comic_title.synopsis), comic_title %>
-		  </div>
-		</div>
-		<% if current_user == comic_title.user %>
-	    	<div class = "admin_links">
-		    	<%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_comic_title_path(comic_title), class: "btn btn-small" %>
-		    	<%= link_to raw("<i class=\"icon-trash\"></i>"), comic_title, method: :delete, data: { confirm: 'Are you sure you want to delete the entire series?' }, class: "btn btn-small btn-danger" %>
-		    </div>
-	    <% end %>
-	</div>
-
-  <% end %>
+	<% @comic_titles.each do |comic_title| %>
+		<li class="span3">
+			<div class="thumbnail_container">
+				<div class="thumbnail_box">
+					<%= image_tag (comic_title.cover_page(:thumb)), class: "thumb_image" %>
+					<div class = "thumb_info">
+					<h4><%= comic_title.title %></h4>
+					<p class = "username">By <%= link_to comic_title.user.username, comic_title.user %></p>
+					<p class = "item_count"><%= pluralize(comic_title.comics.count, "chapter") %></p>
+				</div>      
+				<div class="thumb_synopsis">
+					<%= link_to content_tag(:span, "Synopsis: " + comic_title.synopsis), comic_title %>
+				</div>
+			</div>
+			<% if current_user == comic_title.user %>
+				<div class = "admin_links">
+					<%= link_to raw("<i class=\"icon-pencil\"></i>"), edit_comic_title_path(comic_title), class: "btn btn-small" %>
+					<%= link_to raw("<i class=\"icon-trash\"></i>"), comic_title, method: :delete, data: { confirm: 'Are you sure you want to delete the entire series?' }, class: "btn btn-small btn-danger" %>
+				</div>
+			<% end %>
+		</li>
+	<% end %>
 </ul>
